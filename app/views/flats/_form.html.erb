@@ -1,14 +1,21 @@
+<div class="container p-5 rounded bg-light">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1 class='mb-4'>New Flat</h1>
+      <%= simple_form_for(@flat) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@flat) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <%= f.input :name %>
+          <%= f.input :address %>
+        </div>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address %>
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+    <%= link_to 'Back', flats_path, class: 'btn btn-secondary' %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>
